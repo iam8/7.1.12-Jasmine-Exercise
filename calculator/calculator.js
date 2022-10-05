@@ -3,22 +3,22 @@
 // 7.1.12: Jasmine Testing Exercise
 
 window.addEventListener('DOMContentLoaded', function() {
-  const form = document.getElementById("calc-form");
-  if (form) {
-    setupIntialValues();
-    form.addEventListener("submit", function(e) {
-      e.preventDefault();
-      update();
-    });
-  }
+    const form = document.getElementById("calc-form");
+    if (form) {
+        setupIntialValues();
+        form.addEventListener("submit", function(e) {
+        e.preventDefault();
+        update();
+        });
+    }
 });
 
 function getCurrentUIValues() {
-  return {
-    amount: +(document.getElementById("loan-amount").value),
-    years: +(document.getElementById("loan-years").value),
-    rate: +(document.getElementById("loan-rate").value),
-  }
+    return {
+        amount: +(document.getElementById("loan-amount").value),
+        years: +(document.getElementById("loan-years").value),
+        rate: +(document.getElementById("loan-rate").value),
+    }
 }
 
 // Get the inputs from the DOM.
