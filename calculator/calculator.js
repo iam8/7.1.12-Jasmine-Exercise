@@ -1,3 +1,7 @@
+// Ioana A Mititean
+// 10/05/22
+// 7.1.12: Jasmine Testing Exercise
+
 window.addEventListener('DOMContentLoaded', function() {
   const form = document.getElementById("calc-form");
   if (form) {
