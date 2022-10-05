@@ -36,10 +36,18 @@ function update() {
     return calculateMonthlyPayment(ui_values);
 }
 
-// Given an object of values (a value has amount, years and rate ),
-// calculate the monthly payment.
+// Given an object of values (a value has amount, years and rate ), calculate the monthly payment.
 // The output should be a string that always has 2 decimal places.
 function calculateMonthlyPayment(values) {
+    if (values.amount < 0 || values.rate < 0 || values.years < 0) {
+        throw new Error("Input amounts cannot be negative.");
+    }
+
+    if (values.rate === 0 || values.years === 0) {
+        throw new Error("Yearly rate and number of years must be greater than 0.")
+    }
+
+
     const principle = values.amount;
     const interest_rate = values.rate / 12;
     const num_payments = values.years * 12;
