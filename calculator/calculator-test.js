@@ -61,12 +61,20 @@ describe("Tests for calculateMonthlyPayment()", function() {
     });
     
     
-    it("Should return a result with 2 decimal places", function() {
+    it("Should return a string result representing a number with 2 decimal places", function() {
 
         // First check that the result is a string
         expect(calculateMonthlyPayment({amount: 100, rate: 1, years: 1})).toBeInstanceOf(String);
-    });
-    
-    /// etc
-})
 
+        // Check that the string result has 2 decimal places displayed
+        const result_0 = calculateMonthlyPayment({amount: 0, rate: 1, years: 1});
+        const result_1 = calculateMonthlyPayment({amount: 100, rate: 1, years: 1});
+        const result_2 = calculateMonthlyPayment({amount: 700000, rate: 8000, years: 10});
+        const result_3 = calculateMonthlyPayment({amount: 63636827, rate: 22, years: 7284});
+
+        expect(result_0[result_0.length - 3]).toBe(".");
+        expect(result_1[result_1.length - 3]).toBe(".");
+        expect(result_2[result_2.length - 3]).toBe(".");
+        expect(result_3[result_3.length - 3]).toBe(".");
+    });
+})
