@@ -38,7 +38,7 @@ describe("Tests for updateServerTable() (with setup and tear-down)", function() 
         allServers["server0"] = {serverName : "Alice"};
     })
 
-    it("Should create and add a new 'tr' element to the table in the DOM in updateServerTable()",
+    it("Should create and add a new row to the table in the DOM with the correct information",
         function() {
             updateServerTable();
 
