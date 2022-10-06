@@ -55,14 +55,16 @@ describe("Tests for calculateMonthlyPayment()", function() {
     it('Should calculate the monthly rate correctly', function() {
 
         // Should return a monthly payment of 0 if the loan amount is 0
-        expect(calculateMonthlyPayment({amount: 0, rate: 1, years: 1})).toBe(0);
+        expect(+calculateMonthlyPayment({amount: 0, rate: 1, years: 1})).toBe(0);
 
         // Should calculate correctly for other numbers
     });
     
     
     it("Should return a result with 2 decimal places", function() {
-        // ..
+
+        // First check that the result is a string
+        expect(calculateMonthlyPayment({amount: 100, rate: 1, years: 1})).toBeInstanceOf(String);
     });
     
     /// etc
