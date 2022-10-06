@@ -68,7 +68,7 @@ function calculateMonthlyPayment(values) {
     const num_payments = values.years * 12;
 
     const payment = (principle * interest_rate) / (1 - (1 + interest_rate)**(-num_payments));
-    return (Math.round(payment * 100) / 100).toString();
+    return payment.toFixed(2);
 }
 
 // Given a string representing the monthly payment value,
