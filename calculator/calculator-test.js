@@ -52,7 +52,7 @@ describe("Tests for calculateMonthlyPayment()", function() {
             .toThrowError("Inputs must be numbers.");
     })
 
-    it('Should calculate and round the monthly rate correctly', function() {
+    it('Should calculate the monthly rate correctly', function() {
 
         // Should return a monthly payment of 0 if the loan amount is 0
         expect(calculateMonthlyPayment({amount: 0, rate: 1, years: 1})).toBe("0.00");
@@ -63,7 +63,6 @@ describe("Tests for calculateMonthlyPayment()", function() {
         expect(calculateMonthlyPayment({amount: 50.55, rate: 0.002, years: 60})).toBe("0.07");
         expect(calculateMonthlyPayment({amount: 150000, rate: 0.06, years: 25})).toBe("966.45");
     });
-    
     
     it("Should return a string result representing a number with 2 decimal places", function() {
 
