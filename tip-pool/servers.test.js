@@ -3,8 +3,9 @@
 // 7.1.12: Jasmine Testing Exercise
 
 describe("Servers test (with setup and tear-down)", function() {
+
+    // Initialization logic
     beforeEach(function () {
-        // initialization logic
         serverNameInput.value = 'Alice';
     });
 
@@ -15,7 +16,11 @@ describe("Servers test (with setup and tear-down)", function() {
         expect(allServers['server' + serverId].serverName).toEqual('Alice');
     });
 
+    // Teardown logic
     afterEach(function() {
-        // teardown logic
+        serverNameInput.value = "";
+        allServers = {};
+        serverId = 0;
+        serverTbody.innerHTML = "";
     });
 });
