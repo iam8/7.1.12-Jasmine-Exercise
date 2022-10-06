@@ -52,12 +52,15 @@ describe("Tests for calculateMonthlyPayment()", function() {
             .toThrowError("Inputs must be numbers.");
     })
 
-    it('Should calculate the monthly rate correctly', function() {
+    it('Should calculate and round the monthly rate correctly', function() {
 
         // Should return a monthly payment of 0 if the loan amount is 0
-        expect(+calculateMonthlyPayment({amount: 0, rate: 1, years: 1})).toBe(0);
+        expect(calculateMonthlyPayment({amount: 0, rate: 1, years: 1})).toBe("0.00");
 
-        // Should calculate correctly for other numbers
+        // Should calculate correctly for other valid numbers
+        expect(calculateMonthlyPayment({amount: 100, rate: 1, years: 1})).toBe("13.50");
+        expect(calculateMonthlyPayment({amount: 666666, rate: 100, years: 50})).toBe("5555550.00");
+        expect(calculateMonthlyPayment({amount: 50.55, rate: 4, years: 6.7})).toBe("16.85");
     });
     
     
