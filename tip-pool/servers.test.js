@@ -4,7 +4,7 @@
 
 describe("Servers test (with setup and tear-down)", function() {
 
-    // Initialization logic
+    // Initialization logic: set up a test server named Alice
     beforeEach(function () {
         serverNameInput.value = 'Alice';
     });
@@ -16,18 +16,18 @@ describe("Servers test (with setup and tear-down)", function() {
         expect(allServers['server' + serverId].serverName).toEqual('Alice');
     });
 
-    it("Should update the table HTML with the new server information", function() {
-        submitServerInfo();
+    // it("Should update the table HTML with the new server information", function() {
+    //     submitServerInfo();
 
-    })
+    // })
 
     it("Should reset input value for server name in submitServerInfo()", function() {
-        submitServerInfo()
+        submitServerInfo();
 
         expect(serverNameInput.value).toBe("");
     })
 
-    // Teardown logic
+    // Teardown logic: reset the form and server table
     afterEach(function() {
         serverNameInput.value = "";
         allServers = {};
