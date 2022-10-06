@@ -2,7 +2,7 @@
 // 10/05/22
 // 7.1.12: Jasmine Testing Exercise
 
-describe("Servers test (with setup and tear-down)", function() {
+describe("Tests for submitServerInfo() (with setup and tear-down)", function() {
 
     // Initialization logic: set up a test server named Alice
     beforeEach(function () {
@@ -16,11 +16,6 @@ describe("Servers test (with setup and tear-down)", function() {
         expect(allServers['server' + serverId].serverName).toEqual('Alice');
     });
 
-    // it("Should update the table HTML with the new server information", function() {
-    //     submitServerInfo();
-
-    // })
-
     it("Should reset input value for server name in submitServerInfo()", function() {
         submitServerInfo();
 
@@ -32,6 +27,25 @@ describe("Servers test (with setup and tear-down)", function() {
         serverNameInput.value = "";
         allServers = {};
         serverId = 0;
+        serverTbody.innerHTML = "";
+    });
+});
+
+describe("Tests for updateServerTable() (with setup and tear-down)", function() {
+
+    // Initialization logic: set up a test server named Alice and add it to allServers
+    beforeEach(function () {
+        allServers["server0"] = {serverName : "Alice"};
+    })
+
+    it("Should create and add a new 'tr' element to the table in the DOM in updateServerTable()",
+        function() {
+
+        })
+
+    // Teardown logic: reset allServers and server table
+    afterEach(function() {
+        allServers = {};
         serverTbody.innerHTML = "";
     });
 });
