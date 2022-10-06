@@ -35,7 +35,7 @@ function setupIntialValues() {
     // Put some default values in the inputs
     amount_input.value = 100000;
     years_input.value = 10;
-    rate_input.value = 100;
+    rate_input.value = 0.08;
 
     // Calculate and update the current monthly payment
     update();
