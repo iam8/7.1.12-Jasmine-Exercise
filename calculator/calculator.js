@@ -23,10 +23,22 @@ function getCurrentUIValues() {
     }
 }
 
-// Get the inputs from the DOM.
 // Put some default values in the inputs
 // Call a function to calculate the current monthly payment
 function setupIntialValues() {
+
+    // Get the inputs from the DOM
+    const amount_input = document.querySelector("#loan-amount");
+    const years_input = document.querySelector("#loan-years");
+    const rate_input = document.querySelector("#loan-rate");
+
+    // Put some default values in the inputs
+    amount_input.value = 100000;
+    years_input.value = 10;
+    rate_input.value = 100;
+
+    // Calculate the current monthly payment
+    update();
 }
 
 // Get the current values from the UI
@@ -55,7 +67,8 @@ function calculateMonthlyPayment(values) {
     const interest_rate = values.rate / 12;
     const num_payments = values.years * 12;
 
-    return (principle * interest_rate) / (1 - (1 + interest_rate)**(-num_payments));
+    const payment = (principle * interest_rate) / (1 - (1 + interest_rate)**(-num_payments));
+    return (Math.round(payment * 100) / 100).toString();
 }
 
 // Given a string representing the monthly payment value,
