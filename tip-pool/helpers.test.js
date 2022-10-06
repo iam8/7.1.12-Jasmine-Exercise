@@ -6,7 +6,9 @@ describe("Tests for sumPaymentTotal() (with setup and teardown)", function() {
 
     // Initialization logic
 
-    
+    it("Should calculate the correct payment total from allPayments", function() {
+        
+    })
 
     // Teardown logic
 
@@ -28,6 +30,12 @@ describe("Tests for calculateTipPercent()", function() {
 describe("Tests for appendTd() (with setup and teardown)", function() {
 
     // Initialization logic
+
+    it("Should append a new 'td' element with the correct attributes and value to a given 'tr' \
+        element",
+        function() {
+
+        })
 
     // Teardown logic
 
