@@ -51,7 +51,6 @@ function calculateMonthlyPayment(values) {
         throw new Error("Yearly rate and number of years must be greater than 0.")
     }
 
-
     const principle = values.amount;
     const interest_rate = values.rate / 12;
     const num_payments = values.years * 12;
@@ -62,4 +61,6 @@ function calculateMonthlyPayment(values) {
 // Given a string representing the monthly payment value,
 // update the UI to show the value.
 function updateMonthly(monthly) {
+    const payment_element = document.querySelector("#monthly-payment");
+    payment_element.innerText = monthly;
 }
