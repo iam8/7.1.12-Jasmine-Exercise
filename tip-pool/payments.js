@@ -1,3 +1,7 @@
+// Ioana A Mititean
+// 10/05/22
+// 7.1.12: Jasmine Testing Exercise
+
 let billAmtInput = document.getElementById('billAmt');
 let tipAmtInput = document.getElementById('tipAmt');
 let paymentForm = document.getElementById('paymentForm');

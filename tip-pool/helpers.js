@@ -1,3 +1,6 @@
+// Ioana A Mititean
+// 10/05/22
+// 7.1.12: Jasmine Testing Exercise
 
 // accepts 'tipAmt', 'billAmt', 'tipPercent' and sums total from allPayments objects
 function sumPaymentTotal(type) {

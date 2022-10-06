@@ -1,3 +1,7 @@
+// Ioana A Mititean
+// 10/05/22
+// 7.1.12: Jasmine Testing Exercise
+
 let serverNameInput = document.getElementById('serverName');
 let serverForm = document.getElementById('serverForm');
 

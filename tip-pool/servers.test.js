@@ -1,3 +1,7 @@
+// Ioana A Mititean
+// 10/05/22
+// 7.1.12: Jasmine Testing Exercise
+
 describe("Servers test (with setup and tear-down)", function() {
   beforeEach(function () {
     // initialization logic
