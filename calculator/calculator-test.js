@@ -59,8 +59,9 @@ describe("Tests for calculateMonthlyPayment()", function() {
 
         // Should calculate correctly for other valid numbers
         expect(calculateMonthlyPayment({amount: 100, rate: 1, years: 1})).toBe("13.50");
-        expect(calculateMonthlyPayment({amount: 666666, rate: 100, years: 50})).toBe("5555550.00");
-        expect(calculateMonthlyPayment({amount: 50.55, rate: 4, years: 6.7})).toBe("16.85");
+        expect(calculateMonthlyPayment({amount: 666666, rate: 0.03, years: 11})).toBe("5935.84");
+        expect(calculateMonthlyPayment({amount: 50.55, rate: 0.002, years: 60})).toBe("0.07");
+        expect(calculateMonthlyPayment({amount: 150000, rate: 0.06, years: 25})).toBe("966.45");
     });
     
     
@@ -72,8 +73,8 @@ describe("Tests for calculateMonthlyPayment()", function() {
         // Check that the string result has 2 decimal places displayed
         const result_0 = calculateMonthlyPayment({amount: 0, rate: 1, years: 1});
         const result_1 = calculateMonthlyPayment({amount: 100, rate: 1, years: 1});
-        const result_2 = calculateMonthlyPayment({amount: 700000, rate: 8000, years: 10});
-        const result_3 = calculateMonthlyPayment({amount: 63636827, rate: 22, years: 7284});
+        const result_2 = calculateMonthlyPayment({amount: 700000, rate: 0.1, years: 10});
+        const result_3 = calculateMonthlyPayment({amount: 63636827, rate: 0.09, years: 7284});
 
         expect(result_0[result_0.length - 3]).toBe(".");
         expect(result_1[result_1.length - 3]).toBe(".");
