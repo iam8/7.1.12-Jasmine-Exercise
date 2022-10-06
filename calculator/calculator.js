@@ -39,6 +39,10 @@ function update() {
 // Given an object of values (a value has amount, years and rate ), calculate the monthly payment.
 // The output should be a string that always has 2 decimal places.
 function calculateMonthlyPayment(values) {
+    if (Number.isNaN(values.amount) || Number.isNaN(values.rate) || Number.isNaN(values.years)) {
+        throw new Error("Inputs must be numbers.")
+    }
+
     if (values.amount < 0 || values.rate < 0 || values.years < 0) {
         throw new Error("Input amounts cannot be negative.");
     }
