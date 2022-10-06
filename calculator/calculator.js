@@ -37,15 +37,15 @@ function setupIntialValues() {
     years_input.value = 10;
     rate_input.value = 100;
 
-    // Calculate the current monthly payment
+    // Calculate and update the current monthly payment
     update();
 }
 
-// Get the current values from the UI
-// Update the monthly payment
+// Get the current values from the UI and update the monthly payment
 function update() {
     const ui_values = getCurrentUIValues();
-    return calculateMonthlyPayment(ui_values);
+    const payment = calculateMonthlyPayment(ui_values);
+    updateMonthly(payment);
 }
 
 // Given an object of values (a value has amount, years and rate ), calculate the monthly payment.
