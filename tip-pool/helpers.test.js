@@ -68,3 +68,25 @@ describe("Tests for appendTd()", function() {
             expect(data1.innerText).toBe("1336.1");
         })
 })
+
+describe("Tests for appendDeleteBtn()", function() {
+
+    it("Should add a 'td' element with the correct value to the end of a given 'tr' element",
+        function() {
+
+            const testTr = document.createElement("tr");
+            const testTd = document.createElement("td");
+            testTr.append(testTd);
+            appendDeleteBtn(testTr);
+
+            expect(testTr.childElementCount).toBe(2);
+
+            // Check the location, type, and value of the new delete button
+            const addedBtn = testTr.children[1];
+            expect(addedBtn.tagName).toBe("TD");
+            expect(addedBtn.innerText).toBe("X");
+        })
+
+        // NOTE: as per instructions, I have not tested here that the code works as it should after
+        // clicking the delete button.
+})
