@@ -103,11 +103,22 @@ describe("appendPaymentTable() tests", function() {
             expect(newTr.childElementCount).toBe(3);
 
             // Get the child elements of this new row element
+            const tdList = newTr.children;
+            expect(tdList.length).toBe(3);
 
             // Check that these child elements have the correct attributes
+            const td0 = tdList[0];
+            const td1 = tdList[1];
+            const td2 = tdList[2];
 
+            expect(td0.tagName).toBe("TD");
+            expect(td1.tagName).toBe("TD");
+            expect(td2.tagName).toBe("TD");
+
+            expect(td0.innerText).toBe("$100");
+            expect(td1.innerText).toBe("$25");
+            expect(td2.innerText).toBe("25%")
         })
-
 })
 
 // describe("updateSummary() tests", function() {
