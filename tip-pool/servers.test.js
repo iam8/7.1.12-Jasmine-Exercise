@@ -40,6 +40,7 @@ describe("Tests for updateServerTable() (with setup and tear-down)", function() 
 
     it("Should create and add a new row to the table in the DOM with the correct information",
         function() {
+
             updateServerTable();
 
             expect(serverTbody.childElementCount).toBe(1);
@@ -50,17 +51,19 @@ describe("Tests for updateServerTable() (with setup and tear-down)", function() 
             // Check that the new element has the correct attributes and information
             expect(newTr.tagName).toBe("TR");
             expect(newTr.id).toBe("server0");
-            expect(newTr.childElementCount).toBe(2);
+            expect(newTr.childElementCount).toBe(3);
 
             // Get the child elements of the new outer table element
-            const data0 = newTr.firstElementChild;
-            const data1 = newTr.lastElementChild;
+            const trChildren = newTr.children;
 
             // Check that these child elements have the correct attributes and information
-            expect(data0.tagName).toBe("TD");
-            expect(data1.tagName).toBe("TD");
-            expect(data0.innerText).toBe("Alice");
-            expect(data1.innerText).toBe("$0.00");
+            expect(trChildren[0].tagName).toBe("TD");
+            expect(trChildren[1].tagName).toBe("TD");
+            expect(trChildren[2].tagName).toBe("TD");
+
+            expect(trChildren[0].innerText).toBe("Alice");
+            expect(trChildren[1].innerText).toBe("$0.00");
+            expect(trChildren[2].innerText).toBe("X");
         })
 
     // Teardown logic: reset allServers and server table
