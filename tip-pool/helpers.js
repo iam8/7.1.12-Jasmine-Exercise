@@ -34,7 +34,22 @@ function appendDeleteBtn(tr) {
 
     const delBtn = document.createElement("td");
     delBtn.innerText = "X";
+    delBtn.addEventListener("click", function(event) {
+
+        const table_row = event.target.parentElement;
+
+        // Grab the ID of the current table row
+        const row_id = table_row.id;
+
+        // Remove the parent table row element completely
+        table_row.remove();
+
+        // Remove the server entry from the allServers object
+        delete allServers[row_id];
+    })
 
     tr.append(delBtn);
+
+
 
 }
