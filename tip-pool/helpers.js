@@ -27,3 +27,14 @@ function appendTd(tr, value) {
 
     tr.append(newTd);
 }
+
+// Creates a 'td' element marked with an 'X', which will remove the table row (the given 'tr'
+// element that it belongs to)
+function appendDeleteBtn(tr) {
+
+    const delBtn = document.createElement("td");
+    delBtn.innerText = "X";
+
+    tr.append(delBtn);
+
+}
