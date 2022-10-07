@@ -84,9 +84,31 @@ describe("createCurPayment() tests", function() {
     })
 })
 
-// describe("appendPaymentTable() tests", function() {
+describe("appendPaymentTable() tests", function() {
 
-// })
+    it("Should create and append a new 'tr' element with the correct attributes and value to the \
+        payment table", function() {
+
+            const curPayment = {billAmt: "100", tipAmt: "25", tipPercent: 25};
+            appendPaymentTable(curPayment);
+
+            expect(paymentTbody.childElementCount).toBe(1);
+
+            // Get the newly added row element
+            const newTr = paymentTbody.firstElementChild;
+
+            // Check that the new element has the correct attributes and information
+            expect(newTr.tagName).toBe("TR");
+            expect(newTr.id).toBe("payment0");
+            expect(newTr.childElementCount).toBe(3);
+
+            // Get the child elements of this new row element
+
+            // Check that these child elements have the correct attributes
+
+        })
+
+})
 
 // describe("updateSummary() tests", function() {
 
