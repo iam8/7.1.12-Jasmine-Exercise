@@ -107,24 +107,21 @@ describe("appendPaymentTable() tests", function() {
             // Check that the new element has the correct attributes and information
             expect(newTr.tagName).toBe("TR");
             expect(newTr.id).toBe("payment0");
-            expect(newTr.childElementCount).toBe(3);
+            expect(newTr.childElementCount).toBe(4);
 
             // Get the child elements of this new row element
             const tdList = newTr.children;
-            expect(tdList.length).toBe(3);
 
             // Check that these child elements have the correct attributes
-            const td0 = tdList[0];
-            const td1 = tdList[1];
-            const td2 = tdList[2];
+            expect(tdList[0].tagName).toBe("TD");
+            expect(tdList[1].tagName).toBe("TD");
+            expect(tdList[2].tagName).toBe("TD");
+            expect(tdList[3].tagName).toBe("TD");
 
-            expect(td0.tagName).toBe("TD");
-            expect(td1.tagName).toBe("TD");
-            expect(td2.tagName).toBe("TD");
-
-            expect(td0.innerText).toBe("$100");
-            expect(td1.innerText).toBe("$25");
-            expect(td2.innerText).toBe("25%")
+            expect(tdList[0].innerText).toBe("$100");
+            expect(tdList[1].innerText).toBe("$25");
+            expect(tdList[2].innerText).toBe("25%");
+            expect(tdList[3].innerText).toBe("X");
     })
 
     // Teardown logic: reset values that were changed
