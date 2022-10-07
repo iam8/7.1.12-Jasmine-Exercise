@@ -36,20 +36,20 @@ function appendDeleteBtn(tr) {
     delBtn.innerText = "X";
     delBtn.addEventListener("click", function(event) {
 
-        const table_row = event.target.parentElement;
-
         // Grab the ID of the current table row
-        const row_id = table_row.id;
+        const row_id = tr.id;
 
         // Remove the parent table row element completely
-        table_row.remove();
+        tr.remove();
 
-        // Remove the server entry from the allServers object
+        // Remove the server entry from the allServers or allPayments object
         delete allServers[row_id];
+        delete allPayments[row_id];
+
+        // Update the server table and update the summary
+        updateServerTable();
+        updateSummary();
     })
 
     tr.append(delBtn);
-
-
-
 }
