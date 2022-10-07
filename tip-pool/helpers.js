@@ -29,7 +29,9 @@ function appendTd(tr, value) {
 }
 
 // Creates a 'td' element marked with an 'X', which will remove the table row (the given 'tr'
-// element that it belongs to)
+// element that it belongs to).
+// Upon pressing the delete button, the table (servers or payments table) associated with the row
+// being deleted will be updated.
 function appendDeleteBtn(tr) {
 
     const delBtn = document.createElement("td");
