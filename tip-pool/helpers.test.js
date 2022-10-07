@@ -4,14 +4,26 @@
 
 describe("Tests for sumPaymentTotal() (with setup and teardown)", function() {
 
-    // Initialization logic
-
-    it("Should calculate the correct payment total from allPayments", function() {
-
+    // Initialization logic: add a couple of entries in allPayments
+    beforeEach(function() {
+        allPayments["payment0"] = {billAmt: "100", tipAmt: "23", tipPercent: 23};
+        allPayments["payment1"] = {billAmt: "75", tipAmt: "13", tipPercent: 17};
     })
 
-    // Teardown logic
+    it("Should calculate the correct payment totals from allPayments", function() {
+        const billTotal = sumPaymentTotal("billAmt");
+        const tipTotal = sumPaymentTotal("tipAmt");
+        const tipPercentTotal = sumPaymentTotal("tipPercent");
 
+        expect(billTotal).toBe(175);
+        expect(tipTotal).toBe(36);
+        expect(tipPercentTotal).toBe(40);
+    })
+
+    // Teardown logic: reset the allPayments object
+    afterEach(function() {
+        allPayments = {};
+    })
 })
 
 describe("Tests for calculateTipPercent()", function() {
