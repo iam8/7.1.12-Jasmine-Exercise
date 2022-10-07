@@ -6,12 +6,14 @@ describe("submitPaymentInfo() tests", function() {
 
     // Initialization logic: set up some bill and tip input values
     beforeEach(function() {
+
         billAmtInput.value = 100;
         tipAmtInput.value = 25;
     })
 
     it ("Should add a new entry of payment info to allPayments",
         function() {
+
             submitPaymentInfo();
 
             expect(Object.keys(allPayments).length).toEqual(1);
@@ -21,8 +23,6 @@ describe("submitPaymentInfo() tests", function() {
         })
 
     it("Should reset the bill amount and tip amount inputs to be empty", function() {
-        billAmtInput.value = 50;
-        tipAmtInput.value = 13;
 
         submitPaymentInfo();
 
@@ -32,13 +32,13 @@ describe("submitPaymentInfo() tests", function() {
 
     // Teardown logic: reset values that were changed
     afterEach(function() {
+
         billAmtInput.value = "";
         tipAmtInput.value = "";
 
-        paymentId = 0;
         allPayments = {};
+        paymentId = 0;
 
-        // Reset the inner HTML of the tables that were changed
         paymentTbody.innerHTML = "";
         serverTbody.innerHTML = "";
 
@@ -82,6 +82,13 @@ describe("createCurPayment() tests", function() {
             tipAmtInput.value = 0;
             expect(createCurPayment()).toEqual({billAmt: "100", tipAmt: "0", tipPercent: 0});
     })
+
+    // Teardown logic: reset values that were changed
+    afterEach(function() {
+
+        billAmtInput.value = "";
+        tipAmtInput.value = "";
+    })
 })
 
 describe("appendPaymentTable() tests", function() {
@@ -118,9 +125,61 @@ describe("appendPaymentTable() tests", function() {
             expect(td0.innerText).toBe("$100");
             expect(td1.innerText).toBe("$25");
             expect(td2.innerText).toBe("25%")
-        })
+    })
+
+    // Teardown logic: reset values that were changed
+    afterEach(function() {
+        paymentTbody.innerHTML = "";
+    })
 })
 
-// describe("updateSummary() tests", function() {
+describe("updateSummary() tests", function() {
 
-// })
+    it("Should update the summary table appropriately for a total tip percent and number of \
+        payments of 0",
+        function() {
+
+            updateSummary();
+
+            expect(summaryTds[0].innerHTML).toBe("$0");
+            expect(summaryTds[1].innerHTML).toBe("$0");
+            expect(summaryTds[2].innerHTML).toBe("0%");
+        })
+
+    it("Should update the summary table appropriately for a total tip percent of 0 but a nonzero \
+        number of payments",
+        function() {
+
+            allPayments["payment0"] = {billAmt: "100", tipAmt: "0", tipPercent: 0};
+
+            updateSummary();
+
+            expect(summaryTds[0].innerHTML).toBe("$100");
+            expect(summaryTds[1].innerHTML).toBe("$0");
+            expect(summaryTds[2].innerHTML).toBe("0%");
+        })
+
+    it("Should update the summary table with the correct values for valid billAmt, tipAmt, and \
+        tipPercent inputs",
+        function() {
+
+            allPayments["payment0"] = {billAmt: "100", tipAmt: "23", tipPercent: 23};
+            allPayments["payment1"] = {billAmt: "75", tipAmt: "13", tipPercent: 17};
+
+            updateSummary();
+
+            expect(summaryTds[0].innerHTML).toBe("$175");
+            expect(summaryTds[1].innerHTML).toBe("$36");
+            expect(summaryTds[2].innerHTML).toBe("20%");
+        })
+
+    // Teardown logic: reset values that were changed
+    afterEach(function() {
+
+        allPayments = {};
+
+        for (let td of summaryTds) {
+            td.innerHTML = "";
+        }
+    })
+})
