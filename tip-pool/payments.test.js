@@ -4,7 +4,7 @@
 
 describe("submitPaymentInfo() tests", function() {
 
-    // Initialization logic
+    // Initialization logic: set up some bill and tip input values
     beforeEach(function() {
         billAmtInput.value = 100;
         tipAmtInput.value = 25;
@@ -51,12 +51,43 @@ describe("submitPaymentInfo() tests", function() {
 
 describe("createCurPayment() tests", function() {
 
+    it("Should return 'undefined' for empty or invalid input bill and tip amounts", function() {
+
+        billAmtInput.value = "";
+        tipAmtInput.value = "";
+        expect(createCurPayment()).toBeUndefined();
+
+        billAmtInput.value = -100;
+        tipAmtInput.value = 25;
+        expect(createCurPayment()).toBeUndefined();
+
+        billAmtInput.value = 100;
+        tipAmtInput.value = -25;
+        expect(createCurPayment()).toBeUndefined();
+
+        billAmtInput.value = 0;
+        tipAmtInput.value = 25;
+        expect(createCurPayment()).toBeUndefined();
+    })
+
+    it("Should create an object with the correct payment properties and values for valid input \
+        bill and tip amounts",
+        function() {
+
+            billAmtInput.value = 100;
+            tipAmtInput.value = 25;
+            expect(createCurPayment()).toEqual({billAmt: "100", tipAmt: "25", tipPercent: 25});
+
+            billAmtInput.value = 100;
+            tipAmtInput.value = 0;
+            expect(createCurPayment()).toEqual({billAmt: "100", tipAmt: "0", tipPercent: 0});
+    })
 })
 
-describe("appendPaymentTable() tests", function() {
+// describe("appendPaymentTable() tests", function() {
 
-})
+// })
 
-describe("updateSummary() tests", function() {
+// describe("updateSummary() tests", function() {
 
-})
+// })
