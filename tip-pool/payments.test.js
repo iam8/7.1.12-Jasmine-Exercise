@@ -65,7 +65,13 @@ describe("submitPaymentInfo() tests", function() {
         paymentId = 0;
         allPayments = {};
 
-        // TODO: reset the inner HTML of the tables that were changed
+        // Reset the inner HTML of the tables that were changed
+        paymentTbody.innerHTML = "";
+        serverTbody.innerHTML = "";
+
+        for (let td of summaryTds) {
+            td.innerHTML = "";
+        }
     })
 
 })
